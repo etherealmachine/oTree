@@ -39,10 +39,8 @@
             }
 
             .slider-container {
-                position: relative;
                 width: 50px;
                 height: 315px;
-                top: 162px;
             }
 
             otree-thermometer {
@@ -85,15 +83,6 @@
         <div id="app" class="layout horizontal">
             
             <div id="heatmap-column" class="layout horizontal">
-                <div class="slider-container">
-                    <input
-                        type="range"
-                        min="0"
-                        max="1"
-                        step=".01"
-                        disabled$="[[ !enabled ]]"
-                        value="{{ myDecision::input }}">
-                </div>
                 <div class="layout vertical start">
                     <bimatrix-heatmap
                         id="counterpart-heatmap"
@@ -103,14 +92,24 @@
                         payoffs="[[ otherPayoffsTranspose ]]"
                         color="[[ otherColor ]]">
                     </bimatrix-heatmap>
-                    <bimatrix-heatmap
-                        id="your-heatmap"
-                        size="300"
-                        my-decision="[[ myDecision ]]"
-                        other-decision="[[ otherDecision ]]"
-                        payoffs="[[ myPayoffs ]]"
-                        color="[[ myColor ]]">
-                    </bimatrix-heatmap>
+                    <div id="your-heatmap" class="layout horizontal center">
+                        <div class="slider-container">
+                            <input
+                                type="range"
+                                min="0"
+                                max="1"
+                                step=".01"
+                                disabled$="[[ !enabled ]]"
+                                value="{{ myDecision::input }}">
+                        </div>
+                        <bimatrix-heatmap
+                            size="300"
+                            my-decision="[[ myDecision ]]"
+                            other-decision="[[ otherDecision ]]"
+                            payoffs="[[ myPayoffs ]]"
+                            color="[[ myColor ]]">
+                        </bimatrix-heatmap>
+                    </div>
                 </div>
             </div>
 
